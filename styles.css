@@ -1,0 +1,736 @@
+:root {
+    --primary-color: #00a86b; /* Verde médico */
+    --secondary-color: #f8f9fa;
+    --accent-color: #005d3b;
+    --text-color: #333;
+    --light-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.highlight {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.pulse-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 1rem auto;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.countdown-left, .countdown-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.rod-of-asclepius {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+}
+
+.asclepius-symbol {
+    width: 80px;
+    height: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-color);
+    z-index: 2;
+}
+
+.asclepius-symbol i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 10px rgba(0, 168, 107, 0.5));
+    animation: pulse-rod 3s infinite, glow 5s infinite alternate;
+    position: absolute;
+    top: 20px;
+}
+
+.snake-rod {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.snake-rod::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 140px;
+    background-color: var(--primary-color);
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 168, 107, 0.5);
+}
+
+.snake-rod::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 120px;
+    border: 4px solid var(--primary-color);
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 0 50px 0 0;
+    left: 38px;
+    top: 65px;
+    transform: rotate(10deg);
+    box-shadow: 0 0 10px rgba(0, 168, 107, 0.5);
+    animation: snake-move 5s ease-in-out infinite;
+}
+
+@keyframes snake-move {
+    0%, 100% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+}
+
+.rod-of-asclepius::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 70%;
+    background-color: var(--primary-color);
+    opacity: 0.3;
+    top: 15%;
+    left: 0;
+}
+
+.rod-of-asclepius::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 70%;
+    background-color: var(--primary-color);
+    opacity: 0.3;
+    top: 15%;
+    right: 0;
+}
+
+@keyframes pulse-rod {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(0, 168, 107, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgba(0, 168, 107, 0.8));
+    }
+}
+
+.event-card {
+    background: var(--light-color);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.event-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+}
+
+.event-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 8px;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.count {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: rgba(0, 168, 107, 0.1);
+    width: 60px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.label {
+    font-size: 0.7rem;
+    color: var(--text-color);
+}
+
+.date {
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 168, 107, 0.3);
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.whatsapp-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 168, 107, 0.4);
+}
+
+.whatsapp-btn i {
+    margin-right: 5px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.quotes-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: var(--light-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+    text-align: center;
+    position: relative;
+    padding: 1rem 2rem;
+}
+
+.quote i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+cite {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.icon {
+    position: absolute;
+    color: var(--primary-color);
+    opacity: 0.1;
+    font-size: 30px;
+    animation: float 15s linear infinite;
+}
+
+.icon:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-duration: 20s;
+}
+
+.icon:nth-child(2) {
+    top: 20%;
+    right: 20%;
+    animation-duration: 25s;
+    animation-delay: 2s;
+}
+
+.icon:nth-child(3) {
+    top: 60%;
+    left: 15%;
+    animation-duration: 18s;
+    animation-delay: 1s;
+}
+
+.icon:nth-child(4) {
+    top: 40%;
+    right: 10%;
+    animation-duration: 22s;
+    animation-delay: 4s;
+}
+
+.icon:nth-child(5) {
+    top: 80%;
+    left: 50%;
+    animation-duration: 19s;
+    animation-delay: 3s;
+}
+
+.icon:nth-child(6) {
+    top: 15%;
+    left: 30%;
+    animation-duration: 21s;
+    animation-delay: 5s;
+}
+
+.icon:nth-child(7) {
+    top: 35%;
+    left: 75%;
+    animation-duration: 17s;
+    animation-delay: 2.5s;
+}
+
+.icon:nth-child(8) {
+    top: 75%;
+    left: 85%;
+    animation-duration: 23s;
+    animation-delay: 1.5s;
+}
+
+.icon:nth-child(9) {
+    top: 25%;
+    left: 40%;
+    animation-duration: 26s;
+    animation-delay: 0.5s;
+}
+
+.icon:nth-child(10) {
+    top: 55%;
+    left: 60%;
+    animation-duration: 24s;
+    animation-delay: 3.5s;
+}
+
+.icon:nth-child(11) {
+    top: 90%;
+    left: 25%;
+    animation-duration: 16s;
+    animation-delay: 4.5s;
+}
+
+.icon:nth-child(12) {
+    top: 5%;
+    left: 80%;
+    animation-duration: 27s;
+    animation-delay: 2.2s;
+}
+
+.icon:nth-child(13) {
+    top: 45%;
+    left: 5%;
+    animation-duration: 19s;
+    animation-delay: 3.8s;
+}
+
+.icon:nth-child(14) {
+    top: 70%;
+    left: 35%;
+    animation-duration: 22s;
+    animation-delay: 1.8s;
+}
+
+.icon:nth-child(15) {
+    top: 30%;
+    left: 90%;
+    animation-duration: 18s;
+    animation-delay: 4.2s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 3rem;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .countdown-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .rod-of-asclepius {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .countdown-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .countdown {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .count {
+        width: 50px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .label {
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .count {
+        width: 45px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .label {
+        font-size: 0.5rem;
+    }
+
+    .event-card {
+        padding: 1rem 0.5rem;
+    }
+
+    .event-card h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Animação de entrada dos cartões */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-card {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.event-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.event-card:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.event-card:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.event-card:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.congrats-icon {
+    display: none;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.event-card.expired .countdown {
+    display: none;
+}
+
+.event-card.expired .congrats-icon {
+    display: block;
+}
+
+.event-card:not(.expired) .whatsapp-btn {
+    background-color: #ccc;
+    pointer-events: none;
+    box-shadow: none;
+}
+
+.event-card:not(.expired):hover .whatsapp-btn {
+    background-color: #ccc;
+    transform: none;
+}
+
+.event-card.expired .whatsapp-btn {
+    background-color: var(--primary-color);
+    pointer-events: auto;
+}
+
+.event-card.expired .whatsapp-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.event-card:not(.expired) {
+    filter: saturate(0.7);
+}
+
+.event-card.expired {
+    background: var(--light-color);
+    position: relative;
+    overflow: hidden;
+    animation: card-completed 0.5s ease-in-out forwards;
+}
+
+@keyframes card-completed {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(0, 168, 107, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(0, 168, 107, 0.2);
+    }
+}
+
+.event-card.expired::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, var(--primary-color) 2px, transparent 2px),
+        radial-gradient(circle, var(--primary-color) 1px, transparent 1px),
+        radial-gradient(circle, var(--accent-color) 3px, transparent 3px),
+        radial-gradient(circle, var(--primary-color) 1.5px, transparent 1.5px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px, 40px 10px, 10px 40px;
+    z-index: 0;
+    opacity: 0.1;
+    animation: confetti-fall 15s linear infinite;
+}
+
+@keyframes confetti-fall {
+    0% {
+        background-position: 0 -100px, 25px -75px, 40px -90px, 10px -110px;
+    }
+    100% {
+        background-position: 0 500px, 25px 525px, 40px 510px, 10px 490px;
+    }
+}
+
+.event-card.expired::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, #FFD700 3px, transparent 3px),
+        radial-gradient(circle, #FF6B6B 2px, transparent 2px),
+        radial-gradient(circle, #4CAF50 4px, transparent 4px),
+        radial-gradient(circle, #00a86b 2.5px, transparent 2.5px),
+        radial-gradient(circle, #40E0D0 1.5px, transparent 1.5px);
+    background-size: 100px 100px;
+    background-position: 0 0, 25px 25px, 40px 10px, 10px 40px, 60px 60px;
+    z-index: 0;
+    opacity: 0.15;
+    animation: confetti-celebration 10s linear infinite;
+}
+
+@keyframes confetti-celebration {
+    0% {
+        background-position: 0 -100px, 25px -75px, 40px -90px, 10px -110px, 60px -80px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.15;
+    }
+    100% {
+        background-position: 0 500px, 25px 525px, 40px 510px, 10px 490px, 60px 520px;
+        opacity: 0.02;
+    }
+}
+
+.event-card .congrats-icon,
+.event-card .event-icon,
+.event-card h2,
+.event-card .countdown,
+.event-card .date,
+.event-card .whatsapp-btn {
+    position: relative;
+    z-index: 1;
+}
+
+.event-card.expired .congrats-icon {
+    filter: drop-shadow(0 0 10px rgba(0, 168, 107, 0.3));
+} 
