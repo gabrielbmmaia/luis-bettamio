@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Datas importantes
     const datas = {
-        'aula': new Date('2023-06-22T00:00:00'), // Data no passado para simular expiração
+        'aula': new Date('2025-06-22T00:00:00'),
         'crm': new Date('2025-07-07T00:00:00'),
         'colacao': new Date('2025-09-19T00:00:00'),
         'festa': new Date('2025-09-20T00:00:00')
@@ -85,32 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Atualizar a cada segundo
     setInterval(atualizarContadores, 1000);
-
-    // Função para simular eventos expirados (para teste)
-    function simularEvento(evento) {
-        const cartao = document.querySelector(`.event-card[data-event="${evento}"]`);
-        if (cartao) {
-            cartao.classList.toggle('expired');
-        }
-    }
-
-    // Adicionar botões de teste (remover em produção)
-    /*
-    const container = document.querySelector('.container');
-    const testDiv = document.createElement('div');
-    testDiv.style.marginTop = '20px';
-    testDiv.style.textAlign = 'center';
-    
-    ['aula', 'crm', 'colacao', 'festa'].forEach(evento => {
-        const btn = document.createElement('button');
-        btn.textContent = `Simular ${evento}`;
-        btn.onclick = () => simularEvento(evento);
-        btn.style.margin = '5px';
-        testDiv.appendChild(btn);
-    });
-    
-    container.appendChild(testDiv);
-    */
 
     // Efeito ao rolar a página
     function revelarAoRolar() {
